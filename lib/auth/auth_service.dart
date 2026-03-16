@@ -1,0 +1,33 @@
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+class AuthService {
+  final _client = Supabase.instance.client;
+
+  Future<void> signUp(String email, String password) async {
+    final response = await _client.auth.signUp(
+      email: email,
+      password: password,
+    );
+    if (response.user == null) {
+      throw Exception('Sign up failed. Please try again.');
+    }
+  }
+
+  Future<void> signIn(String email, String password) async {
+    final response = await _client.auth.signInWithPassword(
+      email: email,
+      password: password,
+    );
+    if (response.user == null) {
+      throw Exception('Invalid email or password.');
+    }
+  }
+
+  Future<void> signOut() async {
+    await _client.auth.signOut();
+  }
+
+  User? get currentUser => _client.auth.currentUser;
+
+  bool get isLoggedIn => _client.auth.currentSession != null;
+}
