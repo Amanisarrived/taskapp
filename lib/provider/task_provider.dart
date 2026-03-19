@@ -37,7 +37,7 @@ class TaskProvider extends ChangeNotifier {
   Future<void> addTask(String title) async {
     try {
       await _service.addTask(title);
-      await fetchTasks(silent: true); // no spinner
+      await fetchTasks(silent: true);
     } catch (e) {
       _error = e.toString();
       debugPrint('addTask error: $e');

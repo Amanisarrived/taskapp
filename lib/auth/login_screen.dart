@@ -53,11 +53,13 @@ class _LoginScreenState extends State<LoginScreen>
 
   String _parseError(dynamic error) {
     final msg = error.toString().toLowerCase();
-    if (msg.contains('invalid login credentials') || msg.contains('invalid_credentials')) {
+    if (msg.contains('invalid login credentials') ||
+        msg.contains('invalid_credentials')) {
       return 'Incorrect email or password.';
     } else if (msg.contains('email not confirmed')) {
       return 'Please confirm your email before signing in.';
-    } else if (msg.contains('too many requests') || msg.contains('rate limit')) {
+    } else if (msg.contains('too many requests') ||
+        msg.contains('rate limit')) {
       return 'Too many attempts. Please try again later.';
     } else if (msg.contains('network') || msg.contains('socket')) {
       return 'No internet connection. Please check your network.';
@@ -140,7 +142,10 @@ class _LoginScreenState extends State<LoginScreen>
                     const SizedBox(height: 10),
                     Text(
                       'Sign in to continue managing your tasks',
-                      style: TextStyle(fontSize: 14, color: cs.onSurfaceVariant),
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: cs.onSurfaceVariant,
+                      ),
                     ),
                     const SizedBox(height: 44),
 
@@ -173,19 +178,21 @@ class _LoginScreenState extends State<LoginScreen>
                             size: 20,
                           ),
                           onPressed: () => setState(
-                                () => _obscurePassword = !_obscurePassword,
+                            () => _obscurePassword = !_obscurePassword,
                           ),
                         ),
                       ),
                       validator: Validators.password,
                     ),
 
-                    // error message
                     if (_errorMessage != null) ...[
                       const SizedBox(height: 16),
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 12,
+                        ),
                         decoration: BoxDecoration(
                           color: cs.error.withAlpha(20),
                           borderRadius: BorderRadius.circular(10),
@@ -193,7 +200,11 @@ class _LoginScreenState extends State<LoginScreen>
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.error_outline, color: cs.error, size: 18),
+                            Icon(
+                              Icons.error_outline,
+                              color: cs.error,
+                              size: 18,
+                            ),
                             const SizedBox(width: 10),
                             Expanded(
                               child: Text(
@@ -220,12 +231,17 @@ class _LoginScreenState extends State<LoginScreen>
                       children: [
                         Text(
                           "Don't have an account?",
-                          style: TextStyle(color: cs.onSurfaceVariant, fontSize: 14),
+                          style: TextStyle(
+                            color: cs.onSurfaceVariant,
+                            fontSize: 14,
+                          ),
                         ),
                         TextButton(
                           onPressed: () => Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (_) => const SignupScreen()),
+                            MaterialPageRoute(
+                              builder: (_) => const SignupScreen(),
+                            ),
                           ),
                           child: const Text('Sign Up'),
                         ),

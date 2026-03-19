@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:task_app/provider/task_provider.dart';
 import 'app/constants.dart';
 import 'app/theme.dart';
 import 'auth/login_screen.dart';
 import 'dashboard/dashboard_screen.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
